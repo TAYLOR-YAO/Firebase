@@ -1,0 +1,65 @@
+html{
+    width: 960px;
+    margin: 0px auto;
+}
+h1{
+    position: relative;
+    left: 330px;
+}
+.header{
+    height: 80px;
+    background-color: teal;
+    color: white;
+    border: 3px solid teal;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+
+}
+.boxes{
+    border: 3px solid teal;
+    padding: 10px;
+    border-radius: 10px;
+}
+.panel-heading{
+    background-color: teal;
+    color: white;
+    position: relative;
+    top: 15px;
+    right: 15px;
+    width: 990px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-left: 40px;
+}
+input{
+    width: 310% !important;
+    height: 25px;
+    margin-left: 25px;
+    margin-right: 20px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+table{
+    width: 900px !important;
+    position: relative;
+    left: 30px;
+}
+th{
+    background-color: grey;
+}
+tr{
+    background-color: mintcream;
+}
+label{
+    margin-left: 25px;
+    margin-bottom: 10px;
+}
+button{
+    margin-left: 25px;
+    height: 30px;
+    background-color: teal;
+    color: white;
+}
+
