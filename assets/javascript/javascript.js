@@ -23,11 +23,11 @@ $("#submit").on("click", function(event) {
               first_Train: firsTrainTime,
               frequency: trainfrequency
             };
-    databaseref.ref().push(newTraining);
-    console.log(newTraining.train_name);
-    console.log(newTraining.destination);
-    console.log(newTraining.first_Train);
-    console.log(newTraining.frequency);
+    // databaseref.ref().push(newTraining);
+    // console.log(newTraining.train_name);
+    // console.log(newTraining.destination);
+    // console.log(newTraining.first_Train);
+    // console.log(newTraining.frequency);
 
     $("#trainName-input").val("");
     $("#destination-input").val("");
@@ -38,7 +38,7 @@ $("#submit").on("click", function(event) {
 
 databaseref.ref().on("child_added", function(snapshot, prevChildKey) {
 
-    console.log( " this is the Snapshot:" + snapshot.val());
+    // console.log( " this is the Snapshot:" + snapshot.val());
     var getTrainName = snapshot.val().train_name;
     var getTrainDestination = snapshot.val().destination
     var getFirsTrainTime = snapshot.val().first_Train;
@@ -50,23 +50,25 @@ databaseref.ref().on("child_added", function(snapshot, prevChildKey) {
     console.log("Get First Train time is: " + getFirsTrainTime);
     console.log("Get Frequency is: " + getTrainfrequency);
 ///----------------------Start Convertions---------------------------------------------------------------
-var convertedFirstTrainTime = moment(getFirsTrainTime, 'hh:mm').format("h:mm");
-console.log("converted First Train Time....:" + convertedFirstTrainTime);
+var firstTimeConverted = moment(getFirsTrainTime, "HH:mm");
+var currentTime = moment();
+console.log(currentTime);
+var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+console.log("Diff Time:" + diffTime);
 
-var now = moment().format('HH mm');
-console.log("Time Now:" + now);
-var addMomentToNow = moment().add(getFirsTrainTime).format("hh:mm");
-console.log("This is moment to now:" + addMomentToNow);
-var minutesAway = moment(addMomentToNow).diff(getTrainfrequency);
-console.log("Minutes Away:" + minutesAway);
+var remainder = diffTime % getTrainfrequency;
 
-// var minutesAway = moment(getFirsTrainTime).fromNow();
-// console.log("This is minutes Away:"+ minutesAway);
+console.log("Remainder:" + remainder);
 
+var minutesAway = getTrainfrequency - remainder;
+console.log("Min Away" + minutesAway);
+var nextTrainArrival = moment().add(minutesAway, "minutes");
+console.log("next Arrival:" + nextTrainArrival);
+var convertedNextArrival = moment(nextTrainArrival, "unix").format("hh:mm");
+console.log( "Converted NextArrival:" + convertedNextArrival);
 
-  ///----------------------End Convertions---------------------------------------------------------------
   $("#training-table > tbody").append("<tr><td>" + getTrainName+ "</td><td>" + getTrainDestination + "</td><td>" +
-  getTrainfrequency + "</td><td>" + convertedFirstTrainTime +"</td><td>" + getTrainfrequency + "</td></tr>");
+  getTrainfrequency + "</td><td>" + convertedNextArrival+"</td><td>" + minutesAway + "</td></tr>");
 
 }, function(errorObject) {
   console.log("Errors handled: " + errorObject.code);
