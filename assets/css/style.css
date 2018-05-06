@@ -1,10 +1,9 @@
 html{
-    width: 960px;
-    margin: 0px auto;
-}
-h1{
-    position: relative;
-    left: 330px;
+    width: 100%;
+    height: 100%;
+    padding: 20px 20px;
+    padding-top: 0;
+    margin-bottom: 20px;
 }
 .header{
     height: 80px;
@@ -14,52 +13,91 @@ h1{
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 5px;
-    margin-top: 10px;
-
-}
-.boxes{
-    border: 3px solid teal;
-    padding: 10px;
-    border-radius: 10px;
 }
 .panel-heading{
     background-color: teal;
     color: white;
     position: relative;
     top: 15px;
-    right: 15px;
-    width: 990px;
+    width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    padding-left: 40px;
+    padding-left: 20px;
 }
-input{
-    width: 310% !important;
-    height: 25px;
-    margin-left: 25px;
-    margin-right: 20px;
-    margin-top: -10px;
-    margin-bottom: -10px;
+.boxes{
+    width: 102.7%;
+    padding: 20px;
+    border: 3px solid teal;
+    border-radius: 10px;
 }
-table{
-    width: 900px !important;
-    position: relative;
-    left: 30px;
-}
+
 th{
     background-color: grey;
 }
 tr{
     background-color: mintcream;
 }
-label{
-    margin-left: 25px;
-    margin-bottom: 10px;
+input{
+   width: 90%;
+   height: 25px;
+   font-size: 10px;
 }
 button{
+    width: 100px;
+    text-align: center;
+    font-size: 20px;
     margin-left: 25px;
-    height: 30px;
+    height: 40px;
     background-color: teal;
+    border-radius: 5px;
     color: white;
+}
+
+
+@media only screen and (max-width:1024px) {
+    .boxes{
+        width: 103.2%;
+    }
+}
+@media only screen and (max-width:768px) {
+    .boxes{
+        width: 104.3%;
+    }
+}
+@media only screen and (max-width:425px) {
+    html{
+        width: 100%;
+        font-size: 12px;
+    }
+    #box{
+        padding-left: 15px;
+    }
+    .boxes{
+        width: 108.4%;
+    }
+}
+@media only screen and (max-width:375px) {
+    html{
+        width: 100%;
+        font-size: 10px;
+    }
+    #box{
+        padding-left: 15px;
+    }
+    .boxes{
+        width: 109.8%;
+    }
+}
+@media only screen and (max-width:320px) {
+    html{
+        width: 100%;
+        font-size: 9px;
+    }
+    #box{
+        padding-left: 2px;
+    }
+    .boxes{
+        width: 111.8%;
+    }
 }
 

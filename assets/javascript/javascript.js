@@ -23,7 +23,7 @@ $("#submit").on("click", function(event) {
               first_Train: firsTrainTime,
               frequency: trainfrequency
             };
-    // databaseref.ref().push(newTraining);
+    databaseref.ref().push(newTraining);
     // console.log(newTraining.train_name);
     // console.log(newTraining.destination);
     // console.log(newTraining.first_Train);
@@ -45,27 +45,27 @@ databaseref.ref().on("child_added", function(snapshot, prevChildKey) {
     var getTrainfrequency = snapshot.val().frequency;
 
 
-    console.log ("Get train Name is: " + getTrainName);
-    console.log("Get Destination is: " +  getTrainDestination);
-    console.log("Get First Train time is: " + getFirsTrainTime);
-    console.log("Get Frequency is: " + getTrainfrequency);
+    // console.log ("Get train Name is: " + getTrainName);
+    // console.log("Get Destination is: " +  getTrainDestination);
+    // console.log("Get First Train time is: " + getFirsTrainTime);
+    // console.log("Get Frequency is: " + getTrainfrequency);
 ///----------------------Start Convertions---------------------------------------------------------------
 var firstTimeConverted = moment(getFirsTrainTime, "HH:mm");
 var currentTime = moment();
-console.log(currentTime);
+// console.log(currentTime);
 var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-console.log("Diff Time:" + diffTime);
+// console.log("Diff Time:" + diffTime);
 
 var remainder = diffTime % getTrainfrequency;
 
-console.log("Remainder:" + remainder);
+// console.log("Remainder:" + remainder);
 
 var minutesAway = getTrainfrequency - remainder;
-console.log("Min Away" + minutesAway);
+// console.log("Min Away" + minutesAway);
 var nextTrainArrival = moment().add(minutesAway, "minutes");
-console.log("next Arrival:" + nextTrainArrival);
+// console.log("next Arrival:" + nextTrainArrival);
 var convertedNextArrival = moment(nextTrainArrival, "unix").format("hh:mm");
-console.log( "Converted NextArrival:" + convertedNextArrival);
+// console.log( "Converted NextArrival:" + convertedNextArrival);
 
   $("#training-table > tbody").append("<tr><td>" + getTrainName+ "</td><td>" + getTrainDestination + "</td><td>" +
   getTrainfrequency + "</td><td>" + convertedNextArrival+"</td><td>" + minutesAway + "</td></tr>");
